@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "📦 Install Dependencies",
+      "type": "shell",
+      "command": "npm install",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new", "name": "Install" }
+    },
+    {
+      "label": "🌱 Seed Database",
+      "type": "shell",
+      "command": "node src/db/seed.js",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "new", "name": "Seed" }
+    },
+    {
+      "label": "🚀 Start Backend (dev with hot reload)",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": { "kind": "build", "isDefault": true },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated", "name": "Backend" },
+      "problemMatcher": []
+    },
+    {
+      "label": "🚀 Start Backend (production)",
+      "type": "shell",
+      "command": "npm start",
+      "options": { "cwd": "${workspaceFolder}/backend" },
+      "group": "build",
+      "presentation": { "reveal": "always", "panel": "dedicated", "name": "Backend Prod" }
+    },
+    {
+      "label": "⚡ Full Setup (install + seed + start)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["📦 Install Dependencies", "🌱 Seed Database", "🚀 Start Backend (dev with hot reload)"],
+      "group": "build",
+      "presentation": { "reveal": "always" }
+    }
+  ]
+}
